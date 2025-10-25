@@ -3,8 +3,8 @@
 > *“Life has many fitful erudition by virtue of which I am living and coding daily...”*
 
 ### 🧠 About Me
-Curretnly I'm a Masters student in Computer Science at New York University focussed in Machine Learning model and architectural improvements.
-Also I was an **Ex-Software Engineer at CGI Inc.**, where I worked in integrating **AI** into credit studio systems through advanced camunda BPMNs.  
+Curretnly I'm a Masters student in Computer Science at New York University focussed in Machine Learning model and architectural improvements.\n
+Also I was an **Ex-Software Engineer at CGI Inc.**, where I worked in integrating **AI** into credit studio systems through advanced camunda BPMNs.\n  
 I love blending **deep representational models** with **insightful architecture**, crafting systems that scale — and inspire.  
 
 ### 🏆 Achievements
