@@ -1,124 +1,144 @@
 # Shashwat Saket 👋
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&duration=3000&pause=900&color=3B82F6&center=true&vCenter=true&width=750&lines=Machine+Learning+Researcher;Deep+Learning+%26+Representation+Learning;Computational+Neuroscience;Building+Algorithms%2C+Not+Just+Applications" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&duration=3000&pause=900&color=58A6FF&center=true&vCenter=true&width=750&lines=Machine+Learning+Researcher;Representation+Learning+%26+Vector+Quantization;Computational+Neuroscience;Deep+Learning+%26+Algorithms" />
 </p>
 
 <p align="center">
-  <a href="https://linkedin.com/in/shashwatsaket46"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin" /></a>
-  <a href="https://github.com/shashwatsaket46"><img src="https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github" /></a>
+  <a href="https://linkedin.com/in/shashwatsaket46"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
+  <a href="https://github.com/shashwatsaket46"><img src="https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github&logoColor=white" /></a>
   <a href="mailto:shashwat.saket@nyu.edu"><img src="https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white" /></a>
 </p>
 
-I'm a Computer Science graduate student at **New York University**, where I spend most of my time working on machine learning research.
+I'm a Computer Science graduate student at **New York University**, interested in machine learning, representation learning, and computational neuroscience.
 
-My interests have taken me from representation learning and vector quantization to computational neuroscience, where I'm currently exploring how molecular information can help explain neuronal connectivity.
+My research has taken me from studying hierarchical vector quantization for efficient nearest-neighbor search to integrating molecular and connectivity data to understand biological neural networks.
 
-I enjoy working on problems that require more than applying an existing model: understanding the underlying mathematics, developing an approach, implementing it, and figuring out what the experiments actually tell us.
+I enjoy getting into the details of a problem: understanding the mathematics, implementing an idea, running experiments, and figuring out why something works or doesn't.
 
-Previously, I worked as a Software Engineer at **CGI Inc.**, building enterprise applications, intelligent automation systems, and ML-powered solutions.
+Previously, I worked as a Software Engineer at **CGI Inc.**, where I built enterprise applications, intelligent automation systems, and ML-powered services.
 
 ---
 
-## 🔬 Research
+# 🔬 Research
 
-### Understanding neural connectivity through biological data
+## Understanding Neural Connectivity Through Biological Data
 
 **Graduate Researcher | NYU Neuroinformatics Lab**  
-*May 2026 – Present*
+*New York University · May 2026 – Present*
 
-Working with Prof. Erdem Varol on the Drosophila visual system, exploring how gene expression and transcriptomic information relate to neuronal connectivity.
+Working with Prof. Erdem Varol on the Drosophila visual system, investigating the relationship between neuronal connectivity and gene expression.
 
-One of the interesting questions in this work is whether molecular information can help explain why particular neurons connect to one another.
+The broader goal is to understand whether molecular information can help explain the connectivity patterns observed in biological neural networks.
 
-My work involves:
+My current work includes:
 
 - Integrating connectome, transcriptomic, and gene-expression datasets.
-- Developing computational approaches for neuronal cell-type identification.
+- Developing computational methods for neuronal cell-type identification.
 - Investigating gene-pair associations between presynaptic and postsynaptic neurons.
 - Building transformer-based filtering and analysis pipelines.
 - Running large-scale experiments using GPU-accelerated infrastructure.
-- Exploring how connectivity patterns vary across neuropils and neural circuits.
+- Exploring connectivity patterns across different neuropils and neural circuits.
 
-A significant part of the work involves turning large, heterogeneous biological datasets into something that can be systematically analyzed and evaluated.
+I'm particularly interested in connecting molecular identity with the structure of neural circuits.
 
-**Current research interests:** Connectomics, computational neuroscience, multimodal learning, graph machine learning, representation learning, and biological data integration.
+**Research areas:** Connectomics · Multimodal Learning · Computational Neuroscience · Graph Machine Learning · Biological Data Integration
 
 ---
 
-## 🧠 Featured Research
+# 🧠 Featured Research
 
-### Reusable Hierarchical Codebooks for Approximate Nearest-Neighbor Search
+## 1. Reusable Hierarchical Codebooks for Approximate Nearest-Neighbor Search
 
-One of my major research projects focuses on making vector quantization more efficient by reusing codebooks across multiple levels of retrieval.
+**Research project: Reusable Codebooks: Hierarchical TurboQuant Quantization for Two-Tier Approximate Nearest-Neighbor Retrieval**
 
-In conventional approaches, different quantization stages can require independently constructed codebooks. I have been investigating whether a shared hierarchical codebook can support both coarse candidate filtering and finer retrieval, reducing construction overhead while retaining retrieval quality.
+This project explores a question in efficient vector search: can we reuse a hierarchical quantization structure across multiple retrieval stages instead of independently constructing codebooks for each stage?
 
-The interesting part is not simply building a hierarchy. It is understanding how the choice of construction strategy affects quantization error and, ultimately, nearest-neighbor retrieval accuracy.
+Building on ideas from Google's TurboQuant, I worked on hierarchical codebook construction strategies for two-tier approximate nearest-neighbor retrieval.
 
-#### Three approaches to codebook construction
+The idea is to use a shared quantization structure for coarse candidate filtering and finer retrieval, reducing codebook construction overhead while retaining retrieval quality.
 
-I explored three different strategies:
+### Three construction strategies
 
-| Strategy | Construction idea |
+We investigated three ways of constructing reusable hierarchical codebooks:
+
+| Strategy | Approach |
 |---|---|
-| **Top-Down** | Start with a coarser representation and progressively refine it. |
+| **Top-Down** | Start with a coarse representation and progressively refine it. |
 | **Bottom-Up** | Construct finer representations first and combine them into coarser levels. |
-| **Middle-Anchor** | Use an intermediate quantization level as the reference for constructing the hierarchy. |
+| **Middle-Anchor** | Use an intermediate quantization level as an anchor for constructing the hierarchy. |
 
-#### How the retrieval framework works
+### Architecture
 
 ```mermaid
 flowchart TD
-    A["High-dimensional input vectors"] --> B["Hierarchical codebook construction"]
+    A["High-dimensional embeddings"] --> B["Hierarchical codebook construction"]
+
     B --> C["Shared quantization structure"]
+
     C --> D["Coarse retrieval"]
-    D --> E["Candidate selection"]
+    D --> E["Candidate filtering"]
     E --> F["Fine retrieval / reranking"]
-    F --> G["Nearest-neighbor results"]
+    F --> G["Nearest neighbors"]
 
-    B -.-> H["Top-Down"]
-    B -.-> I["Bottom-Up"]
-    B -.-> J["Middle-Anchor"]
+    B --> H["Top-Down"]
+    B --> I["Bottom-Up"]
+    B --> J["Middle-Anchor"]
 
-    style B fill:#2563eb,color:#fff,stroke:#2563eb
-    style G fill:#15803d,color:#fff,stroke:#15803d
+    style B fill:#2563eb,color:#fff
+    style G fill:#15803d,color:#fff
 ```
 
-#### What I investigated
+### Mathematical and theoretical analysis
 
-- Hierarchical codebook construction using Lloyd-Max quantization.
-- Quantization error propagation between hierarchical levels.
-- Error conservation and monotonicity across construction strategies.
-- The effect of anchor placement on retrieval quality.
-- The relationship between reconstruction error and Recall@1.
-- Construction cost versus retrieval accuracy.
+Beyond implementation, an important part of this work was understanding how quantization error behaves across hierarchical levels.
 
-#### Experimental evaluation
+I worked on the mathematical analysis of:
 
-We evaluated our approaches using GloVe-200 and OpenAI embedding datasets with 1,536 and 3,072 dimensions, including multiple random seeds and ablation experiments.
+- Conservation of MSE Penalty.
+- Monotone Penalty across hierarchical quantization levels.
+- Retrieval-MSE Divergence.
+- Error propagation under different codebook construction strategies.
+- The relationship between reconstruction error and nearest-neighbor ranking stability.
 
-Some of the findings from the evaluated configurations:
+One of the important observations is that minimizing mean squared reconstruction error does not necessarily minimize retrieval error.
 
-| Observation | Experimental result |
+Two quantization strategies can have similar reconstruction quality but behave differently when the objective is preserving nearest-neighbor rankings.
+
+This distinction became central to understanding why different hierarchy construction strategies produce different retrieval results.
+
+### Experimental evaluation
+
+Evaluated the approaches on:
+
+- GloVe-200 embeddings.
+- OpenAI embeddings with 1,536 dimensions.
+- OpenAI embeddings with 3,072 dimensions.
+
+Compared against Product Quantization (PQ), TurboQuant, and Extended RaBitQ.
+
+| Experimental finding | Result |
 |---|---|
-| Top-Down and Middle-Anchor | Recall@1 within approximately 1 percentage point of their corresponding single-tier references |
+| Top-Down | Recall@1 within approximately 1 percentage point of its corresponding single-tier reference |
+| Middle-Anchor | Recall@1 within approximately 1 percentage point of its corresponding single-tier reference |
 | Bottom-Up | Recall@1 degradation of up to approximately 12 percentage points |
-| GloVe-200 | 2.2% improvement in Recall@1 over Product Quantization in the evaluated setting |
-| Codebook construction | Approximately 50×–1,300× lower construction cost in evaluated configurations |
+| GloVe-200 | 2.2% improvement in Recall@1 over PQ in the evaluated setting |
+| Construction cost | Approximately 50×–1,300× lower in evaluated configurations |
 
-The experiments highlighted something particularly interesting: the order in which a quantization hierarchy is constructed matters. Similar-looking codebook structures can behave quite differently depending on how quantization errors propagate between levels.
-
-**Methods and baselines explored:** Lloyd-Max quantization, Product Quantization (PQ), TurboQuant, and Extended RaBitQ.
+The experiments highlighted that the placement of the quantization anchor and the direction of hierarchy construction matter considerably. Error accumulation across levels can affect retrieval performance even when reconstruction error looks reasonable.
 
 <details>
-<summary><b>More about the research</b></summary>
+<summary><b>Further details: experiments, theory and methodology</b></summary>
 
-The project involved mathematical derivations, implementation of multiple construction strategies, experimental comparisons, and ablation studies.
+**Quantization:** Lloyd-Max quantization and hierarchical codebook construction.
 
-Rather than evaluating compression in isolation, the experiments considered the effect of quantization decisions on downstream retrieval quality.
+**Evaluation:** Recall@1, reconstruction error, construction cost, multiple random seeds and ablation experiments.
 
-The broader goal is to understand when hierarchical codebook reuse is beneficial, where it introduces additional error, and how construction choices influence the efficiency-accuracy trade-off.
+**Baselines:** Product Quantization, TurboQuant and Extended RaBitQ.
+
+**Main research question:** How can hierarchical codebooks be constructed and reused without introducing substantial retrieval-quality degradation?
+
+The work investigates the distinction between MSE-optimal quantization and retrieval-optimal quantization, particularly when multiple quantization levels share a common structure.
 
 *Research manuscript in preparation.*
 
@@ -126,23 +146,127 @@ The broader goal is to understand when hierarchical codebook reuse is beneficial
 
 ---
 
-## 🛠️ Other Things I've Built
+# 🧪 Selected Machine Learning Projects
 
-### ReservaDirect | Autonomous AI Reservation Agent
+## 2. Intracortical Neural Activity Decoding
 
-Built at the **tech@NYU Hackathon (HOF Office)**.
+Explored neural decoding by predicting finger kinematics from intracortical neural recordings.
 
-ReservaDirect connects Google Calendar with real-world restaurant reservations.
+The project involved building an ensemble-based prediction pipeline using neural activity from 96 recording channels.
 
-The idea was simple: instead of manually searching for restaurants and making calls, let an autonomous agent handle the process.
+**My contributions:**
 
-- Extracts reservation requirements from calendar event descriptions.
-- Discovers and ranks relevant restaurants.
-- Initiates AI-powered voice calls.
-- Handles reservation confirmation.
-- Updates calendar events dynamically.
+- Developed an ensemble of 22 predictive models.
+- Worked with neural recordings across 312 sessions.
+- Built a pipeline for predicting finger movement from neural activity.
+- Experimented with model combinations and evaluation strategies.
 
-**Technologies:** Python, FastAPI, React, Docker, Voice AI.
+**Reported result:** R² = 0.7373.
+
+The project finished first among 24 participants in the associated competition.
+
+This was particularly interesting because it connected machine learning model design with a real neuroscience problem: understanding how movement-related information is represented in neural activity.
+
+## 3. Scaling Laws in Musical Sequence Generation
+
+*September 2025 – February 2026*
+
+An exploration of scaling laws in generative models using symbolic musical data instead of conventional text datasets.
+
+The project involved building an end-to-end pipeline:
+
+```text
+MIDICaps Dataset
+       |
+       v
+MIDI to ABC Conversion
+       |
+       v
+Tokenization
+       |
+       v
+Vocabulary Construction
+       |
+       v
+Training / Validation / Test
+       |
+       v
+Sequence Modeling
+       |
+       v
+Generated Music
+```
+
+**Models explored:**
+
+- nanoGPT (~29M parameters).
+- Transformer architectures.
+- LSTM models as baseline comparisons.
+
+**What I worked on:**
+
+- Built the preprocessing pipeline for symbolic music representation.
+- Implemented MIDI-to-ABC conversion.
+- Developed tokenization and vocabulary construction.
+- Trained and compared different sequence-modeling architectures.
+- Studied how model size and data representation affect generation quality.
+- Generated playable musical sequences from trained models.
+
+An interesting observation was that Transformers handled long-range musical dependencies better than the LSTM baselines in our experiments.
+
+[View the project repository](https://github.com/shashwatsaket46/Scaling-Law-Musical-MIDI-Data--ML-Project)
+
+## 4. Erica AI: Knowledge Graph-Based RAG
+
+*October 2025 – December 2025*
+
+Built Erica AI to explore how structured knowledge can make LLM-based systems more reliable and contextually consistent.
+
+Instead of relying entirely on vector similarity, the system combines semantic retrieval with a knowledge graph.
+
+**What I built:**
+
+- A Neo4j knowledge graph containing 5,000+ nodes.
+- An LLM-driven semantic extraction pipeline.
+- Structured concepts, definitions, and prerequisite relationships.
+- Vector-based semantic retrieval.
+- Graph-constrained retrieval and subgraph reasoning.
+- Asynchronous ingestion and inference pipelines.
+
+The system combines FastAPI, Docker, Neo4j, embeddings, and local LLM inference through Ollama.
+
+The interesting part was exploring how structured relationships can provide context that ordinary similarity-based retrieval might miss.
+
+---
+
+# 🚀 Engineering & Applied AI
+
+## ReservaDirect: Autonomous AI Reservation Agent
+
+**Tech@NYU Hackathon · HOF Office**
+
+Built an autonomous system that connects Google Calendar with real-world restaurant reservations.
+
+Users create a calendar event with their reservation preferences. The system extracts the booking requirements, finds suitable restaurants, and places AI-powered voice calls to make the reservation.
+
+**The pipeline:**
+
+```mermaid
+flowchart TD
+    A["Google Calendar Event"] --> B["Intent Extraction using Claude"]
+    B --> C["Restaurant Discovery"]
+    C --> D["Databricks Ranking"]
+    D --> E["ElevenLabs Voice Call"]
+    E --> F["Reservation Confirmation"]
+    F --> G["Calendar Update"]
+
+    style A fill:#2563eb,color:#fff
+    style G fill:#15803d,color:#fff
+```
+
+Implemented automated reservation creation, updates, and cancellations through calendar webhook triggers.
+
+**Technologies:** Python · FastAPI · React · Claude · Databricks · ElevenLabs · Docker
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=ZCsI_wIn5to">
@@ -154,50 +278,75 @@ The idea was simple: instead of manually searching for restaurants and making ca
   <a href="https://github.com/shashwatsaket46/ReservaDirect">Source code</a>
 </p>
 
-### Knowledge Graph-Based RAG
+---
 
-Explored combining knowledge graphs with retrieval-augmented generation to improve contextual retrieval and grounded LLM responses.
+# 📚 Earlier Research & Projects
 
-Worked on extracting structured relationships, semantic retrieval, and combining graph-based context with language model generation.
+A few other problems I've explored during my undergraduate and graduate journey.
 
-### NLP-Based Propaganda Detection
+<details>
+<summary><b>Crop Prediction Using Metaheuristic Optimization</b></summary>
 
-Worked on applying deep learning and natural language processing to identify propaganda patterns in textual data.
+Explored crop prediction using machine learning and optimization techniques.
 
-Explored text representations, preprocessing pipelines, and classification architectures for unstructured text.
+Worked with metaheuristic approaches including:
+
+- Cuckoo Search.
+- Particle Swarm Optimization.
+- Ant Colony Optimization.
+
+Focused on feature optimization and evaluating the effect of different search strategies on predictive performance.
+
+</details>
+
+<details>
+<summary><b>NLP-Based Propaganda Detection</b></summary>
+
+Worked on identifying propaganda patterns in news articles using natural language processing and deep learning.
+
+Explored text preprocessing, representation learning, and classification models for unstructured textual data.
+
+</details>
+
+<details>
+<summary><b>COVID-19 Travel Optimization</b></summary>
+
+Explored optimization approaches for travel-related problems during the COVID-19 period, including Ant Colony Optimization and Honey Bee Mating Optimization.
+
+This work contributed to my earlier research experience in metaheuristic optimization.
+
+</details>
 
 ---
 
-## 💼 Professional Experience
+# 💼 Professional Experience
 
 ### Software Engineer | CGI Inc.
 *August 2023 – September 2025*
 
-Before moving further into research, I spent two years working on enterprise software and intelligent automation.
+Worked on enterprise applications, conversational AI, and intelligent automation.
 
-Some of the work I contributed to:
+A few contributions:
 
 - Developed NLP-based conversational AI modules that automated approximately 40% of targeted enterprise workflows.
 - Built Camunda-based ML microservices, improving deployment throughput by 35%.
 - Implemented anomaly detection workflows for financial datasets, improving detection accuracy by 25%.
-- Worked on backend services, distributed systems, and enterprise application integration.
-- Collaborated with engineering teams across ML and backend development.
+- Developed backend services and distributed application components.
+- Worked across ML integration, backend engineering, and enterprise systems.
 
-This experience gave me a practical understanding of what it takes to move an ML idea beyond a notebook and into a working system.
+My time at CGI gave me experience taking ideas beyond experimentation and building systems that work in real production environments.
 
 ---
 
-## 📄 Publications
+# 📄 Publications
 
 - Research publication in *Cluster Computing* (Springer).
 
-My current research interests also include efficient vector search, hierarchical quantization, and multimodal learning for computational neuroscience.
+My current research also includes work on reusable hierarchical codebooks and multimodal machine learning for computational neuroscience.
 
 ---
 
-## ⚙️ Tools & Technologies
-
-These are some of the tools I have worked with across research and engineering.
+# ⚙️ Tools I Use
 
 **Machine Learning & Deep Learning**
 
@@ -205,7 +354,7 @@ These are some of the tools I have worked with across research and engineering.
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow" />
 </p>
 
-**Data Science & Research**
+**Data Science & Scientific Computing**
 
 <p>
   <img src="https://skillicons.dev/icons?i=r,matlab,anaconda" />
@@ -225,28 +374,21 @@ These are some of the tools I have worked with across research and engineering.
 
 ---
 
-## 📊 GitHub Activity
+# 📊 GitHub Activity
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=shashwatsaket46&show_icons=true&hide_border=true&theme=transparent&rank_icon=github" />
-  <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=shashwatsaket46&hide_border=true&theme=transparent" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=shashwatsaket46&theme=github-compact&hide_border=true" width="95%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=shashwatsaket46&theme=github-compact&hide_border=true" width="100%" alt="GitHub contribution activity"/>
 </p>
 
 ---
 
-## 📫 Get in Touch
+# 📫 Let's Connect
 
-I'm always happy to connect with people working on interesting problems in machine learning, algorithms, and computational biology.
+I'm always interested in connecting with people working on machine learning, algorithms, computational biology, and interesting research problems.
 
 - **LinkedIn:** [shashwatsaket46](https://linkedin.com/in/shashwatsaket46)
 - **GitHub:** [shashwatsaket46](https://github.com/shashwatsaket46)
 - **Email:** [shashwat.saket@nyu.edu](mailto:shashwat.saket@nyu.edu)
-
----
 
 <p align="center">
   <i>Interested in understanding why algorithms work, not just making them work.</i>
