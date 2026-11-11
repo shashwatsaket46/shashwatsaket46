@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://linkedin.com/in/shashwatsaket46"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
   <a href="https://github.com/shashwatsaket46"><img src="https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github&logoColor=white" /></a>
+  <a href="https://scholar.google.com/citations?user=PGAcnBsAAAAJ&hl=en"><img src="https://img.shields.io/badge/Google_Scholar-Publications-4285F4?style=flat-square&logo=googlescholar&logoColor=white" /></a>
   <a href="mailto:shashwat.saket@nyu.edu"><img src="https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white" /></a>
 </p>
 
@@ -210,13 +211,9 @@ Generated Music
 - Studied how model size and data representation affect generation quality.
 - Generated playable musical sequences from trained models.
 
-An interesting part of this project was exploring how different architectures capture long-range dependencies in musical sequences.
-
 [View the project repository](https://github.com/shashwatsaket46/Scaling-Law-Musical-MIDI-Data--ML-Project)
 
 ## 4. Erica AI | Knowledge Graph-Based RAG
-
-*October 2025 – December 2025*
 
 Built Erica AI to explore how structured knowledge can make LLM-based systems more reliable and contextually consistent.
 
@@ -376,9 +373,27 @@ My time at CGI gave me experience taking ideas beyond experimentation and buildi
 
 # 📄 Publications
 
-- Research publication in *Cluster Computing* (Springer).
+1. **Security Provisions in Smart Edge Computing Devices Using Blockchain and Machine Learning Algorithms: A Novel Approach**  
+   *Cluster Computing, Springer, 2024*  
+   [DOI: 10.1007/s10586-022-03813-x](https://doi.org/10.1007/s10586-022-03813-x)
 
-My current research also includes work on reusable hierarchical codebooks and multimodal machine learning for computational neuroscience.
+2. **Travelling Guidance Using ACO and HBMO Techniques in COVID-19 Pandemics**  
+   *Springer, 2023*  
+   [DOI: 10.1007/978-981-19-5191-6_38](https://doi.org/10.1007/978-981-19-5191-6_38)
+
+3. **Cloud and Big Data Security System's Review Principles: A Decisive Investigation**  
+   *Wireless Personal Communications, Springer, 2022*  
+   [DOI: 10.1007/s11277-022-09781-0](https://doi.org/10.1007/s11277-022-09781-0)
+
+4. **Hybrid Approach for Deception Tracing in Smart Cities Using LR and n-fold Intelligent ML Techniques**  
+   *International Journal of Management Practice, 2022*  
+   [DOI: 10.1504/IJMP.2022.10048751](https://doi.org/10.1504/IJMP.2022.10048751)
+
+<p align="center">
+  <a href="https://scholar.google.com/citations?user=PGAcnBsAAAAJ&hl=en">
+    <img src="https://img.shields.io/badge/Google_Scholar-View_All_Publications-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" />
+  </a>
+</p>
 
 ---
 
@@ -410,10 +425,15 @@ My current research also includes work on reusable hierarchical codebooks and mu
 
 ---
 
-# 📊 GitHub Activity
+# 📌 Featured Repositories
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=shashwatsaket46&theme=github-compact&hide_border=true" width="100%" alt="GitHub contribution activity"/>
+  <a href="https://github.com/shashwatsaket46/ReservaDirect">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=shashwatsaket46&repo=ReservaDirect&theme=transparent&hide_border=true" />
+  </a>
+  <a href="https://github.com/shashwatsaket46/Scaling-Law-Musical-MIDI-Data--ML-Project">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=shashwatsaket46&repo=Scaling-Law-Musical-MIDI-Data--ML-Project&theme=transparent&hide_border=true" />
+  </a>
 </p>
 
 ---
@@ -424,6 +444,7 @@ I'm always interested in connecting with people working on machine learning, alg
 
 - **LinkedIn:** [shashwatsaket46](https://linkedin.com/in/shashwatsaket46)
 - **GitHub:** [shashwatsaket46](https://github.com/shashwatsaket46)
+- **Google Scholar:** [Publications](https://scholar.google.com/citations?user=PGAcnBsAAAAJ&hl=en)
 - **Email:** [shashwat.saket@nyu.edu](mailto:shashwat.saket@nyu.edu)
 
 <p align="center">
