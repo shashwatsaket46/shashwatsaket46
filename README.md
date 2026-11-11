@@ -12,11 +12,11 @@
 
 I'm a Computer Science graduate student at **New York University**, interested in machine learning, representation learning, and computational neuroscience.
 
-My research has taken me from studying hierarchical vector quantization for efficient nearest-neighbor search to integrating molecular and connectivity data to understand biological neural networks.
+My work spans a few different directions: efficient vector quantization and nearest-neighbor search, deep learning for neural signal decoding, and computational methods for understanding biological neural networks.
 
 I enjoy getting into the details of a problem: understanding the mathematics, implementing an idea, running experiments, and figuring out why something works or doesn't.
 
-Previously, I worked as a Software Engineer at **CGI Inc.**, where I built enterprise applications, intelligent automation systems, and ML-powered services.
+Before graduate school, I worked as a Software Engineer at **CGI Inc.**, building enterprise applications, intelligent automation systems, and ML-powered services.
 
 ---
 
@@ -29,9 +29,9 @@ Previously, I worked as a Software Engineer at **CGI Inc.**, where I built enter
 
 Working with Prof. Erdem Varol on the Drosophila visual system, investigating the relationship between neuronal connectivity and gene expression.
 
-The broader goal is to understand whether molecular information can help explain the connectivity patterns observed in biological neural networks.
+The broader question is whether molecular information can help explain the connectivity patterns observed in biological neural networks.
 
-My current work includes:
+My current work involves:
 
 - Integrating connectome, transcriptomic, and gene-expression datasets.
 - Developing computational methods for neuronal cell-type identification.
@@ -40,9 +40,9 @@ My current work includes:
 - Running large-scale experiments using GPU-accelerated infrastructure.
 - Exploring connectivity patterns across different neuropils and neural circuits.
 
-I'm particularly interested in connecting molecular identity with the structure of neural circuits.
+A particularly interesting aspect of this work is connecting molecular identity with the structure of neural circuits.
 
-**Research areas:** Connectomics · Multimodal Learning · Computational Neuroscience · Graph Machine Learning · Biological Data Integration
+**Research interests:** Connectomics · Multimodal Learning · Computational Neuroscience · Graph Machine Learning · Biological Data Integration
 
 ---
 
@@ -50,36 +50,34 @@ I'm particularly interested in connecting molecular identity with the structure 
 
 ## 1. Reusable Hierarchical Codebooks for Approximate Nearest-Neighbor Search
 
-**Research project: Reusable Codebooks: Hierarchical TurboQuant Quantization for Two-Tier Approximate Nearest-Neighbor Retrieval**
+One of my major research projects focuses on making vector quantization more efficient through reusable hierarchical codebooks.
 
-This project explores a question in efficient vector search: can we reuse a hierarchical quantization structure across multiple retrieval stages instead of independently constructing codebooks for each stage?
+The central question is straightforward: can a shared hierarchical quantization structure support multiple retrieval stages without requiring independently constructed codebooks?
 
-Building on ideas from Google's TurboQuant, I worked on hierarchical codebook construction strategies for two-tier approximate nearest-neighbor retrieval.
+The project investigates a two-tier retrieval strategy in which a shared codebook structure supports coarse candidate filtering followed by finer retrieval.
 
-The idea is to use a shared quantization structure for coarse candidate filtering and finer retrieval, reducing codebook construction overhead while retaining retrieval quality.
+What makes this interesting is that codebook construction is not just an implementation detail. The way quantization levels are constructed directly influences how reconstruction errors accumulate and, ultimately, how well nearest-neighbor relationships are preserved.
 
-### Three construction strategies
+### Three codebook construction strategies
 
-We investigated three ways of constructing reusable hierarchical codebooks:
+I investigated three different approaches:
 
-| Strategy | Approach |
+| Strategy | Construction approach |
 |---|---|
 | **Top-Down** | Start with a coarse representation and progressively refine it. |
 | **Bottom-Up** | Construct finer representations first and combine them into coarser levels. |
-| **Middle-Anchor** | Use an intermediate quantization level as an anchor for constructing the hierarchy. |
+| **Middle-Anchor** | Use an intermediate quantization level as the reference for constructing the hierarchy. |
 
-### Architecture
+### How the framework works
 
 ```mermaid
 flowchart TD
     A["High-dimensional embeddings"] --> B["Hierarchical codebook construction"]
-
     B --> C["Shared quantization structure"]
-
     C --> D["Coarse retrieval"]
     D --> E["Candidate filtering"]
     E --> F["Fine retrieval / reranking"]
-    F --> G["Nearest neighbors"]
+    F --> G["Nearest-neighbor results"]
 
     B --> H["Top-Down"]
     B --> I["Bottom-Up"]
@@ -91,25 +89,23 @@ flowchart TD
 
 ### Mathematical and theoretical analysis
 
-Beyond implementation, an important part of this work was understanding how quantization error behaves across hierarchical levels.
+An important part of this research was understanding how quantization error behaves across hierarchical levels.
 
-I worked on the mathematical analysis of:
+The work involved mathematical analysis of:
 
-- Conservation of MSE Penalty.
-- Monotone Penalty across hierarchical quantization levels.
-- Retrieval-MSE Divergence.
+- Conservation of MSE penalty.
+- Monotone penalty across hierarchical quantization levels.
+- Retrieval-MSE divergence.
 - Error propagation under different codebook construction strategies.
 - The relationship between reconstruction error and nearest-neighbor ranking stability.
 
-One of the important observations is that minimizing mean squared reconstruction error does not necessarily minimize retrieval error.
+One of the interesting observations is that minimizing mean squared reconstruction error does not necessarily minimize retrieval error.
 
 Two quantization strategies can have similar reconstruction quality but behave differently when the objective is preserving nearest-neighbor rankings.
 
-This distinction became central to understanding why different hierarchy construction strategies produce different retrieval results.
-
 ### Experimental evaluation
 
-Evaluated the approaches on:
+Evaluated the approaches using:
 
 - GloVe-200 embeddings.
 - OpenAI embeddings with 1,536 dimensions.
@@ -125,20 +121,22 @@ Compared against Product Quantization (PQ), TurboQuant, and Extended RaBitQ.
 | GloVe-200 | 2.2% improvement in Recall@1 over PQ in the evaluated setting |
 | Construction cost | Approximately 50×–1,300× lower in evaluated configurations |
 
-The experiments highlighted that the placement of the quantization anchor and the direction of hierarchy construction matter considerably. Error accumulation across levels can affect retrieval performance even when reconstruction error looks reasonable.
+The experiments highlighted that the direction of hierarchy construction and the placement of the quantization anchor matter considerably.
+
+The most interesting part for me was understanding why two seemingly reasonable construction strategies can produce very different retrieval behavior.
 
 <details>
-<summary><b>Further details: experiments, theory and methodology</b></summary>
+<summary><b>More about the research and experiments</b></summary>
 
 **Quantization:** Lloyd-Max quantization and hierarchical codebook construction.
 
-**Evaluation:** Recall@1, reconstruction error, construction cost, multiple random seeds and ablation experiments.
+**Evaluation:** Recall@1, reconstruction error, construction cost, multiple random seeds, and ablation experiments.
 
-**Baselines:** Product Quantization, TurboQuant and Extended RaBitQ.
+**Baselines:** Product Quantization, TurboQuant, and Extended RaBitQ.
 
-**Main research question:** How can hierarchical codebooks be constructed and reused without introducing substantial retrieval-quality degradation?
+**Research question:** How can hierarchical codebooks be constructed and reused without introducing substantial retrieval-quality degradation?
 
-The work investigates the distinction between MSE-optimal quantization and retrieval-optimal quantization, particularly when multiple quantization levels share a common structure.
+The broader investigation considers the distinction between MSE-optimal quantization and retrieval-optimal quantization, particularly when multiple quantization levels share a common structure.
 
 *Research manuscript in preparation.*
 
@@ -154,7 +152,7 @@ Explored neural decoding by predicting finger kinematics from intracortical neur
 
 The project involved building an ensemble-based prediction pipeline using neural activity from 96 recording channels.
 
-**My contributions:**
+**What I worked on:**
 
 - Developed an ensemble of 22 predictive models.
 - Worked with neural recordings across 312 sessions.
@@ -165,7 +163,7 @@ The project involved building an ensemble-based prediction pipeline using neural
 
 The project finished first among 24 participants in the associated competition.
 
-This was particularly interesting because it connected machine learning model design with a real neuroscience problem: understanding how movement-related information is represented in neural activity.
+What I found particularly interesting was connecting model design with a real neuroscience problem: understanding how movement-related information is represented in neural activity.
 
 ## 3. Scaling Laws in Musical Sequence Generation
 
@@ -208,21 +206,21 @@ Generated Music
 - Built the preprocessing pipeline for symbolic music representation.
 - Implemented MIDI-to-ABC conversion.
 - Developed tokenization and vocabulary construction.
-- Trained and compared different sequence-modeling architectures.
+- Trained and compared sequence-modeling architectures.
 - Studied how model size and data representation affect generation quality.
 - Generated playable musical sequences from trained models.
 
-An interesting observation was that Transformers handled long-range musical dependencies better than the LSTM baselines in our experiments.
+An interesting part of this project was exploring how different architectures capture long-range dependencies in musical sequences.
 
 [View the project repository](https://github.com/shashwatsaket46/Scaling-Law-Musical-MIDI-Data--ML-Project)
 
-## 4. Erica AI: Knowledge Graph-Based RAG
+## 4. Erica AI | Knowledge Graph-Based RAG
 
 *October 2025 – December 2025*
 
 Built Erica AI to explore how structured knowledge can make LLM-based systems more reliable and contextually consistent.
 
-Instead of relying entirely on vector similarity, the system combines semantic retrieval with a knowledge graph.
+Rather than relying entirely on vector similarity, the system combines semantic retrieval with a knowledge graph.
 
 **What I built:**
 
@@ -239,24 +237,56 @@ The interesting part was exploring how structured relationships can provide cont
 
 ---
 
-# 🚀 Engineering & Applied AI
+# 📈 Quantitative AI & Intelligent Systems
 
-## ReservaDirect: Autonomous AI Reservation Agent
+## 5. Contessa | Quantitative AI Trading Terminal
+
+Built an end-to-end quantitative trading terminal connecting market signals, AI-assisted analysis, strategy execution, and portfolio performance tracking.
+
+The goal was to build more than a system that generates BUY or SELL signals. I wanted to understand why a signal was generated, how confident the system was, what strategy acted on it, and whether the resulting prediction was actually correct.
+
+**What it does:**
+
+- Generates quantitative trading signals with probability and confidence estimates.
+- Uses AI to explain the reasoning behind market signals.
+- Tracks dealer positioning, gamma exposure, and liquidity.
+- Supports configurable trading strategies.
+- Monitors positions, portfolio exposure, and P&L.
+- Maintains historical records connecting predictions, strategies, and trade outcomes.
+- Provides conversational interaction for exploring signals and portfolio activity.
+
+One aspect I particularly enjoyed was building the evaluation layer: tracing a trade back to its original signal and assessing the system's performance over time.
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=fJCMX4lWpAE">
+    <img src="https://img.youtube.com/vi/fJCMX4lWpAE/maxresdefault.jpg" width="85%" alt="Contessa Quantitative AI Trading Terminal"/>
+  </a>
+  <br/>
+  <a href="https://www.youtube.com/watch?v=fJCMX4lWpAE">▶ Watch Contessa in action</a>
+</p>
+
+*An experimental quantitative analysis system, not a claim of guaranteed trading profitability.*
+
+---
+
+# 🤖 Autonomous AI Systems
+
+## 6. ReservaDirect | Autonomous AI Reservation Agent
 
 **Tech@NYU Hackathon · HOF Office**
 
-Built an autonomous system that connects Google Calendar with real-world restaurant reservations.
+Built an autonomous system connecting Google Calendar with real-world restaurant reservations.
 
-Users create a calendar event with their reservation preferences. The system extracts the booking requirements, finds suitable restaurants, and places AI-powered voice calls to make the reservation.
+Users create a calendar event with their reservation preferences. The system extracts booking requirements, finds suitable restaurants, and initiates AI-powered voice calls to make the reservation.
 
-**The pipeline:**
+**The workflow:**
 
 ```mermaid
 flowchart TD
-    A["Google Calendar Event"] --> B["Intent Extraction using Claude"]
+    A["Google Calendar Event"] --> B["Intent Extraction"]
     B --> C["Restaurant Discovery"]
-    C --> D["Databricks Ranking"]
-    D --> E["ElevenLabs Voice Call"]
+    C --> D["Restaurant Ranking"]
+    D --> E["AI Voice Call"]
     E --> F["Reservation Confirmation"]
     F --> G["Calendar Update"]
 
@@ -264,7 +294,13 @@ flowchart TD
     style G fill:#15803d,color:#fff
 ```
 
-Implemented automated reservation creation, updates, and cancellations through calendar webhook triggers.
+**What I implemented:**
+
+- Natural language intent extraction.
+- Restaurant discovery and ranking.
+- AI-powered voice interactions.
+- Reservation confirmation.
+- Calendar event updates and automation.
 
 **Technologies:** Python · FastAPI · React · Claude · Databricks · ElevenLabs · Docker
 
@@ -280,7 +316,7 @@ Implemented automated reservation creation, updates, and cancellations through c
 
 ---
 
-# 📚 Earlier Research & Projects
+# 📚 Earlier Research
 
 A few other problems I've explored during my undergraduate and graduate journey.
 
@@ -289,13 +325,13 @@ A few other problems I've explored during my undergraduate and graduate journey.
 
 Explored crop prediction using machine learning and optimization techniques.
 
-Worked with metaheuristic approaches including:
+Worked with:
 
 - Cuckoo Search.
 - Particle Swarm Optimization.
 - Ant Colony Optimization.
 
-Focused on feature optimization and evaluating the effect of different search strategies on predictive performance.
+Focused on feature optimization and evaluating how different search strategies influence predictive performance.
 
 </details>
 
@@ -334,7 +370,7 @@ A few contributions:
 - Developed backend services and distributed application components.
 - Worked across ML integration, backend engineering, and enterprise systems.
 
-My time at CGI gave me experience taking ideas beyond experimentation and building systems that work in real production environments.
+My time at CGI gave me experience taking ideas beyond experimentation and building systems that work in production environments.
 
 ---
 
@@ -346,7 +382,7 @@ My current research also includes work on reusable hierarchical codebooks and mu
 
 ---
 
-# ⚙️ Tools I Use
+# ⚙️ Tools & Technologies
 
 **Machine Learning & Deep Learning**
 
